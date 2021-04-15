@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/index}">
+<head>
+    <title>All Lords</title>
+
+</head>
+<body>
+<div layout:fragment="replace_fragment">
+    <div th:object="${planet}">
+        <form method="post" action="/savePlanet">
+            <div class="row my-3">
+                <div class="col-auto">
+                    <label for="name">Name</label>
+                    <input id="name" th:field="*{name}" type="text" name="name"
+                           placeholder="Enter planet name" class="form-control"/>
+                </div>
+                <div class="row my-3">
+                    <div class="col-auto">
+                        <button type="submit" name="submit" class="btn btn-primary">add</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

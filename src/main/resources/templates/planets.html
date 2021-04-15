@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/index}">
+<head>
+    <title>All Planets</title>
+</head>
+<body>
+<div layout:fragment="replace_fragment">
+    <h2>All Planet</h2>
+    <div class="row" th:each="planet : ${planets}" id="planet" >
+        <div class="col">
+            <p th:text="${planet.name}"></p>
+        </div>
+        <div class="col">
+            <p th:text="${planet.lord} ? ${planet.lord.name} : 'vacant'"></p>
+        </div>
+        <div class="col" >
+            <a class="btn btn-primary" th:href="@{/delete/{id}(id = ${planet.id})}">delete</a>
+        </div>
+    </div>
+    <div class="row my-3">
+        <div class="col">
+            <a class="btn btn-primary" th:href="@{/addPlanet}">new planet</a>
+        </div>
+        <div class="col">
+            <a class="btn btn-primary" th:href="@{/}" >show all lords</a>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

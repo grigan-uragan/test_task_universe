@@ -26,6 +26,10 @@ public class Planet {
         return name;
     }
 
+    public boolean isVacant() {
+        return lord == null;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

@@ -1,6 +1,7 @@
 package ru.grigan.test_task_universe.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,7 +13,7 @@ public class Lord {
     private int id;
     private String name;
     private int age;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lord")
     private Set<Planet> planets;
 
     public int getId() {
@@ -45,6 +46,13 @@ public class Lord {
 
     public void setPlanets(Set<Planet> planets) {
         this.planets = planets;
+    }
+
+    public void addPlanet(Planet planet) {
+        if (planets == null) {
+            planets = new HashSet<>();
+        }
+        planets.add(planet);
     }
 
     @Override
